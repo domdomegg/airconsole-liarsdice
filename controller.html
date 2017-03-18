@@ -1,0 +1,65 @@
+<!doctype HTML>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Liar's dice - AirConsole</title>
+	<link rel="stylesheet" type="text/css" href="styles/shared.css">
+	<link rel="stylesheet" type="text/css" href="styles/controller.css">
+</head>
+
+<body>
+	<div id="liveGame">
+		<p id="rightText">
+			<!-- BID: 5 2's -->
+		</p>
+		<p id="leftText">Liar's dice</p>
+	</div>
+
+	<div id="dice">
+	</div>
+
+	<div id="controls" style="display: none">
+		<div id="controls_startRound" class="button">
+			Start round
+		</div><br />
+		<div id="controls_onesAreWild" class="button disabled">
+			1's are wild
+		</div>
+		<div id="controls_playSounds" class="button enabled">
+			Sounds
+		</div>
+		<div id="controls_toggleInstructions" class="button">
+			Instructions
+		</div>
+	</div>
+
+	<div id="bid" style="display: none">
+		<span>I think there is</span>
+		<div id="bidQuantity" class="numberInput">
+			<p>+</p>
+			<p>1</p>
+			<p>-</p>
+		</div>
+		<div id="bidDie" class="numberInput">
+			<p>+</p>
+			<p>1</p>
+			<p>-</p>
+		</div>
+		<span><!-- 's --></span>
+		<div id="challengeBid" class="button">
+			Challenge
+		</div>
+		<div id="placeBid" class="button">
+			Place bid
+		</div>
+		<div id="invalidBid" class="button invalid" style="display: none">
+			Invalid Bid
+		</div>
+	</div>
+	<script type="text/javascript" src="https://www.airconsole.com/api/airconsole-1.6.0.js"></script>
+	<script type="text/javascript" src="js/shared.js"></script>
+	<script type="text/javascript" src="js/controller.js"></script>
+</body>
+
+</html>

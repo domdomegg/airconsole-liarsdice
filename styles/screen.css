@@ -1,0 +1,152 @@
+body {
+    background: #FFFFFF;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#main_container {
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.container {
+    border-top: 5px solid #eee;
+}
+
+h1 {
+    font-size: 72px;
+    margin: 30px 0 0 0;
+    border-bottom: 10px solid #eee;
+}
+
+#subtitle {
+    float: right;
+    font-size: 24px;
+    margin: 48px 0 0 0;
+}
+
+
+/* Current game information */
+
+#gameInfoContainer {
+    overflow: hidden;
+    padding: 20px;
+}
+
+#current {
+    font-size: 30px;
+    margin: 20px;
+}
+
+#currentDice {
+    float: right;
+    font-size: 30px;
+    margin: 20px;
+}
+
+.user, .bid, .totalDice {
+    font-weight: bold;
+}
+
+#diceReveal .die {
+    background-color: #C70D02;
+    background-image: url('../img/d6-faces.svg');
+    background-repeat: no-repeat;
+    background-position: 40% 0;
+    background-size: 600%;
+    box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.5);
+    height: 5vw;
+    width: 5vw;
+    border-radius: 0.7vw;
+    display: inline-block;
+    margin: 0.3vw;
+}
+
+#diceReveal span {
+    font-size: 2vw;
+    margin: 1.5vw 0 0 1vw;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+/* Player list */
+
+#players {
+    border-collapse: collapse;
+    font-size: 24px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+#players tr td, #players tr th {
+    padding: 10px 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+
+#players tbody:nth-child(2) {
+    border-top: 1px solid #ccc;
+}
+
+#players tbody:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+#players tr td:empty, #players tr th:empty {
+    padding: 0;
+}
+
+#players tr td:nth-child(2), #players tr th:nth-child(2) {
+    text-align: left;
+    width: 100%;
+}
+
+
+/* Scores */
+
+.scoreNeutral {
+    color: #000;
+}
+
+.scorePositive {
+    color: #008000;
+}
+
+.scoreNegative {
+    color: #B22222;
+}
+
+
+/* Options */
+
+#options, #options h2 {
+    font-size: 24px;
+}
+
+#optionsTable {
+    border-collapse: collapse;
+    font-size: 24px;
+    margin: 20px 0;
+    width: 100%;
+}
+
+#optionsTable tr td {
+    padding: 10px 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+}
+
+#optionsTable tr:nth-child(odd) {
+    background-color: #f6f6f6;
+}
+
+#optionsTable tr td:empty {
+    padding: 0;
+}
+
+#optionsTable tr td:nth-child(2) {
+    width: 100%;
+}

@@ -1,0 +1,207 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+
+body {
+    background: #076324;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+
+/* Current game information */
+
+#liveGame {
+    border-bottom: 2vh double #054B1B;
+    width: 95%;
+    margin: 0 auto;
+}
+
+#liveGame p {
+    margin: 0;
+    padding: 2vh 0;
+    height: 6vw;
+    font-size: 6vw;
+    font-weight: bold;
+}
+
+#liveGame #rightText {
+    float: right;
+}
+
+
+/* Master controls */
+
+#controls, #passControlsContainer {
+    width: 95%;
+    margin: 2vh auto;
+    text-align: center;
+}
+
+#controls #startGame {
+    font-size: 10vw;
+    width: auto;
+}
+
+#controls .button, #passControlsContainer .button {
+    font-size: 5vw;
+    margin: 1vh 0;
+}
+
+#controls .enabled::before {
+    content: '✓ ';
+}
+
+#controls .disabled::before {
+    content: '✖ ';
+}
+
+
+/* Dice styling */
+
+#dice {
+    width: 100%;
+    margin: 2.5vw 0;
+    padding: 0;
+    text-align: center;
+}
+
+.die {
+    background-color: #C70D02;
+    background-image: url('../img/d6-faces.svg');
+    background-repeat: no-repeat;
+    background-position: 40% 0;
+    background-size: 600%;
+    box-shadow: 0.2em 0.2em 1em rgba(0, 0, 0, 0.5);
+    height: 25vw;
+    width: 25vw;
+    border-radius: 3.5vw;
+    display: inline-block;
+    margin: 2.5vw;
+}
+
+
+/* Bidding */
+
+#bid {
+    width: 95%;
+    margin: 1.5vh auto 0 auto;
+    padding-top: 2.5vh;
+    border-top: 2vh double #054B1B;
+    text-align: center;
+}
+
+#bid span {
+    vertical-align: top;
+    position: relative;
+    top: 7vh;
+    font-size: 7vw;
+    color: #fff;
+}
+
+.numberInput {
+    background: #fff;
+    color: #000;
+    border: 0.5vw solid #ccc;
+    display: inline-block;
+    text-align: center;
+    border-radius: 1vw;
+    width: 15vw;
+}
+
+.numberInput p {
+    margin: 0;
+    font-size: 5vh;
+    cursor: pointer;
+}
+
+.numberInput p:nth-child(2) {
+    border-top: 0.25vw solid #eee;
+    border-bottom: 0.25vw solid #eee;
+    cursor: auto;
+}
+
+.button {
+    margin: 2vh 0;
+    background: #fff;
+    color: #054B1B;
+    border: 1vw solid #054B1B;
+    border-radius: 2vw;
+    font-size: 6vw;
+    padding: 2vh;
+    width: 36vw;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+
+.button.invalid {
+    background: #C70D02;
+    color: #fff;
+    border-color: #8b0901;
+    cursor: auto;
+}
+
+
+/*! * * * * * * * * * * * * * * * * * * * *\
+  CSShake :: shake-crazy
+  v1.5.0
+  CSS classes to move your DOM
+  (c) 2015 @elrumordelaluz
+  http://elrumordelaluz.github.io/csshake/
+  Licensed under MIT
+\* * * * * * * * * * * * * * * * * * * * */
+
+.shake-crazy {
+    display: inline-block;
+    transform-origin: center center;
+    animation-name: shake-crazy;
+    animation-duration: 100ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake-crazy {
+    10% {
+        transform: translate(2px, 3px) rotate(-9deg);
+        opacity: 1;
+    }
+    20% {
+        transform: translate(3px, 3px) rotate(-7deg);
+        opacity: 0.71;
+    }
+    30% {
+        transform: translate(2px, 18px) rotate(5deg);
+        opacity: 0.83;
+    }
+    40% {
+        transform: translate(7px, 18px) rotate(-7deg);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translate(13px, -14px) rotate(10deg);
+        opacity: 0.71;
+    }
+    60% {
+        transform: translate(-14px, 20px) rotate(3deg);
+        opacity: 0.42;
+    }
+    70% {
+        transform: translate(-15px, 17px) rotate(5deg);
+        opacity: 0.7;
+    }
+    80% {
+        transform: translate(-17px, -1px) rotate(-3deg);
+        opacity: 0.62;
+    }
+    90% {
+        transform: translate(-4px, 2px) rotate(8deg);
+        opacity: 0.15;
+    }
+    0%, 100% {
+        transform: translate(0, 0) rotate(0);
+    }
+}

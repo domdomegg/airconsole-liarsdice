@@ -2,6 +2,10 @@
 
 Liar's dice with points rather than losing dice, created for AirConsole.
 
+[Test this repository](https://www.airconsole.com/#https://domdomegg.github.io/liarsdice/)
+
+[Or through the debug interface](https://www.airconsole.com/simulator/#debug:https://domdomegg.github.io/liarsdice/)
+
 ## How to play
 
 Each player gets five dice, which are rolled at the beginning of each round. You are only allowed to see your dice. (Protip: Tap your dice to hide them from prying eyes)

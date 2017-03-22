@@ -251,6 +251,23 @@ function doChallenge(device_id) {
         audio.play();
     }
 
+    // Loop through number of players counting number of die and create HTML string
+    var s1 = "";
+    var s2 = "";
+    for (var i = 0; i < gameInfo.activePlayerDeviceIds.length; i++) {
+        for (var j = 0; j < gameInfo.starting_dice; j++) {
+            // May the odds be ever in your favour
+            if(players[gameInfo.activePlayerDeviceIds[i]].dice[j] == gameInfo.currentBidDie) {
+                actual_number_of_die++;
+                s1 += '<div class="die" style="background-position: ' + (players[gameInfo.activePlayerDeviceIds[i]].dice[j] - 1) * 20 + '% 0; background-color: ' + players[gameInfo.activePlayerDeviceIds[i]].color + '"></div>';
+            } else {
+                s2 += '<div class="die" style="background-position: ' + (players[gameInfo.activePlayerDeviceIds[i]].dice[j] - 1) * 20 + '% 0; background-color: ' + players[gameInfo.activePlayerDeviceIds[i]].color + '"></div>';
+            }
+        }
+    }
+    e_diceReveal.innerHTML += s1;
+    e_diceReveal.innerHTML += s2;
+
     // Seperate the die of type that were bid from the rest of the die by adding two spacers, saving the position of the first one
     var spacer = e_diceReveal.insertBefore(document.createElement('br'), e_diceReveal.children[actual_number_of_die]);
     spacer = e_diceReveal.insertBefore(document.createElement('br'), spacer);

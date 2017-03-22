@@ -47,7 +47,7 @@ h1 {
     font-weight: bold;
 }
 
-#diceReveal .die {
+.die {
     background-color: #C70D02;
     background-image: url('../img/d6-faces.svg');
     background-repeat: no-repeat;

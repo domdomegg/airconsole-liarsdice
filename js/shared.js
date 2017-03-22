@@ -20,7 +20,7 @@ var STRINGS = {
 
 };
 
-// Function to create player string with colored block - e.g. '<span style="color: #C70D02">■</span> Guest 1'. Block is programmable - for mobile full block(█) is more widley supported
+// Function to create player string with colored block - e.g. '<span style="color: #C70D02">■</span> Guest 1'. Block is programmable - for mobile full block(█) is more widely supported
 function playerStringWithColor(device_id, color, block) {
     if(block === undefined) {
         block = '■';

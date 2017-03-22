@@ -17,6 +17,7 @@ var e_bidDie = document.getElementById('bidDie');
 var e_placeBid = document.getElementById('placeBid');
 var e_invalidBid = document.getElementById('invalidBid');
 var e_challengeBid = document.getElementById('challengeBid');
+var e_waitingForBid = document.getElementById('waitingForBid');
 
 var player_color = '#C70D02';
 var dice_hidden = false;
@@ -207,6 +208,8 @@ function updateBid() {
 
     if (gameInfo.nextPlayerDeviceId == air_console.getDeviceId()) {
         // If it's the user's turn...
+        e_waitingForBid.innerHTML = "";
+
         if (Number(e_bidQuantity.children[1].innerHTML) > gameInfo.currentBidQuantity || (Number(e_bidQuantity.children[1].innerHTML) == gameInfo.currentBidQuantity && Number(e_bidDie.children[1].innerHTML) > gameInfo.currentBidDie)) {
             // Show placeBid button if bid is valid
             e_placeBid.style.display = "inline-block";
@@ -229,25 +232,33 @@ function updateBid() {
         e_placeBid.style.display = "none";
         e_invalidBid.style.display = "none";
         e_challengeBid.style.display = "none";
+
+        e_waitingForBid.innerHTML = '<h2>Waiting for ' + air_console.getNickname(gameInfo.nextPlayerDeviceId) + ' to bid</h2>';
     }
 }
 
 // Toggle dice
-e_dice.addEventListener('click', function() {
+e_dice.addEventListener('touchdown', diceToggleListener);
+e_dice.addEventListener('mousedown', diceToggleListener);
+function diceToggleListener() {
     dice_hidden = !dice_hidden;
     updateState();
-});
+}
 
 // Start round button
-e_controls_startRound.addEventListener('click', function() {
+e_controls_startRound.addEventListener('touchdown', startRoundButtonListener);
+e_controls_startRound.addEventListener('mousedown', startRoundButtonListener);
+function startRoundButtonListener() {
     e_controls.style.display = "none";
     air_console.message(AirConsole.SCREEN, {
         action: MESSAGES.start
     });
-});
+}
 
 // 1's are wild button
-e_controls_onesAreWild.addEventListener('click', function() {
+e_controls_onesAreWild.addEventListener('touchdown', onesAreWildListener);
+e_controls_onesAreWild.addEventListener('mousedown', onesAreWildListener);
+function onesAreWildListener() {
     options.onesAreWild = !options.onesAreWild;
 
     air_console.message(AirConsole.SCREEN, {
@@ -256,10 +267,12 @@ e_controls_onesAreWild.addEventListener('click', function() {
     });
 
     updateState();
-});
+}
 
 // Music button
-e_controls_playSounds.addEventListener('click', function() {
+e_controls_playSounds.addEventListener('touchdown', playSoundsListener);
+e_controls_playSounds.addEventListener('mousedown', playSoundsListener);
+function playSoundsListener() {
     options.playSounds = !options.playSounds;
 
     air_console.message(AirConsole.SCREEN, {
@@ -268,17 +281,21 @@ e_controls_playSounds.addEventListener('click', function() {
     });
 
     updateState();
-});
+}
 
 // Instructions button
-e_controls_toggleInstructions.addEventListener('click', function() {
+e_controls_toggleInstructions.addEventListener('touchdown', toggleInstructionsListener);
+e_controls_toggleInstructions.addEventListener('mousedown', toggleInstructionsListener);
+function toggleInstructionsListener() {
     air_console.message(AirConsole.SCREEN, {
-        action: MESSAGES.toggleInstructions,
+        action: MESSAGES.toggleInstructions
     });
-});
+}
 
 // Bid button
-e_placeBid.addEventListener('click', function() {
+e_placeBid.addEventListener('touchdown', bidButtonListener);
+e_placeBid.addEventListener('mousedown', bidButtonListener);
+function bidButtonListener() {
     // Hide all the buttons
     e_placeBid.style.display = "none";
     e_invalidBid.style.display = "none";
@@ -302,10 +319,13 @@ e_placeBid.addEventListener('click', function() {
         console.warn("Failed bid checks");
         updateBid();
     }
-});
+}
+
 
 // Challenge button
-e_challengeBid.addEventListener('click', function() {
+e_challengeBid.addEventListener('touchdown', challengeButtonListener);
+e_challengeBid.addEventListener('mousedown', challengeButtonListener);
+function challengeButtonListener() {
     // Hide all the buttons
     e_placeBid.style.display = "none";
     e_invalidBid.style.display = "none";
@@ -314,35 +334,43 @@ e_challengeBid.addEventListener('click', function() {
     air_console.message(AirConsole.SCREEN, {
         action: MESSAGES.challenge
     });
-});
+}
 
 // Quantity numberInput
-e_bidQuantity.children[0].addEventListener('click', function() {
+e_bidQuantity.children[0].addEventListener('touchdown', increaseBidQuantity);
+e_bidQuantity.children[0].addEventListener('mousedown', increaseBidQuantity);
+function increaseBidQuantity() {
     e_bidQuantity.children[1].innerHTML++;
     updateBid();
-});
-e_bidQuantity.children[2].addEventListener('click', function() {
+}
+e_bidQuantity.children[2].addEventListener('touchdown', decreaseBidQuantity);
+e_bidQuantity.children[2].addEventListener('mousedown', decreaseBidQuantity);
+function decreaseBidQuantity() {
     // Check not going below previous bid and not going below 1
     if (Number(e_bidQuantity.children[1].innerHTML) > gameInfo.currentBidQuantity && Number(e_bidQuantity.children[1].innerHTML) > 1) {
         e_bidQuantity.children[1].innerHTML--;
     }
     updateBid();
-});
+}
 
 // Die numberInput
-e_bidDie.children[0].addEventListener('click', function() {
+e_bidDie.children[0].addEventListener('touchdown', increaseBidDie);
+e_bidDie.children[0].addEventListener('mousedown', increaseBidDie);
+function increaseBidDie() {
     // Check not going beyond sides_on_die
     if (Number(e_bidDie.children[1].innerHTML) < gameInfo.sides_on_die) {
         e_bidDie.children[1].innerHTML++;
         updateBid();
     }
-});
-e_bidDie.children[2].addEventListener('click', function() {
+}
+e_bidDie.children[2].addEventListener('touchdown', decreaseBidDie);
+e_bidDie.children[2].addEventListener('mousedown', decreaseBidDie);
+function decreaseBidDie() {
     // Check not going below 1
     if (Number(e_bidDie.children[1].innerHTML) > 1) {
         e_bidDie.children[1].innerHTML--;
         updateBid();
     }
-});
+}
 
 window.onload = init;

@@ -135,6 +135,18 @@ function init() {
 
         updateControllers();
     };
+
+    air_console.onAdShow = function() {
+        backgroundMusic.pause();
+    };
+
+    air_console.onAdComplete = function() {
+        if(options.playSounds) {
+            backgroundMusic.play();
+        } else {
+            backgroundMusic.pause();
+        }
+    };
 }
 
 function startGame() {
@@ -216,6 +228,7 @@ function doBid(device_id, bid) {
 
     // Create bid string e.g. "1 2" or "5 4's"
     var bidString = gameInfo.currentBidQuantity + ' ' + gameInfo.currentBidDie;
+    // gameInfo.currentBidderColor
     if (gameInfo.currentBidQuantity != 1) {
         bidString += '\'s';
     }

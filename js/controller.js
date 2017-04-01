@@ -53,7 +53,7 @@ var init = function() {
 
 function updateState() {
     // Set UI to user's color
-    if (player_color != playerInfo.color) {
+    if (!playerInfo.color || player_color != playerInfo.color) {
         player_color = playerInfo.color;
         setCSSColor();
     }

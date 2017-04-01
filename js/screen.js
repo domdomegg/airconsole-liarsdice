@@ -130,9 +130,7 @@ function init() {
     };
 
     air_console.onDeviceProfileChange = function(device_id) {
-		// Update #players to reflect username change
-		document.getElementById(device_id).children[1].innerHTML = playerStringWithColor(device_id, players[device_id].color);
-
+		updatePlayerList();
         updateControllers();
     };
 

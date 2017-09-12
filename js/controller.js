@@ -1,10 +1,12 @@
+/*global AirConsole,MESSAGES,playerStringWithColor*/
+/*eslint-env browser*/
+'use strict';
+
 // Create AirConsole instance
 var air_console = null;
 
 // Get DOM elements
-var e_liveGame = document.getElementById('liveGame');
 var e_rightText = document.getElementById('rightText');
-var e_leftText = document.getElementById('leftText');
 var e_controls = document.getElementById('controls');
 var e_controls_startRound = document.getElementById('controls_startRound');
 var e_controls_onesAreWild = document.getElementById('controls_onesAreWild');
@@ -53,7 +55,7 @@ var init = function() {
 
 function updateState() {
     // Set UI to user's color
-    if (!playerInfo.color || player_color != playerInfo.color) {
+    if (playerInfo && player_color != playerInfo.color) {
         player_color = playerInfo.color;
         setCSSColor();
     }
@@ -178,6 +180,13 @@ function alertUser() {
     if(window.navigator.vibrate) {
         window.navigator.vibrate(200);
     }
+}
+
+// endsWith function. Ahem IE & iOS
+if (typeof String.prototype.endsWith !== 'function') {
+    String.prototype.endsWith = function(suffix) {
+        return this.indexOf(suffix, this.length - suffix.length) !== -1;
+    };
 }
 
 function setCSSColor() {

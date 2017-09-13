@@ -247,7 +247,7 @@ function updateBid() {
 }
 
 // Toggle dice
-e_dice.addEventListener('touchdown', diceToggleListener);
+e_dice.addEventListener('touchstart', diceToggleListener);
 e_dice.addEventListener('mousedown', diceToggleListener);
 function diceToggleListener() {
     dice_hidden = !dice_hidden;
@@ -255,7 +255,7 @@ function diceToggleListener() {
 }
 
 // Start round button
-e_controls_startRound.addEventListener('touchdown', startRoundButtonListener);
+e_controls_startRound.addEventListener('touchstart', startRoundButtonListener);
 e_controls_startRound.addEventListener('mousedown', startRoundButtonListener);
 function startRoundButtonListener() {
     e_controls.style.display = "none";
@@ -265,7 +265,7 @@ function startRoundButtonListener() {
 }
 
 // 1's are wild button
-e_controls_onesAreWild.addEventListener('touchdown', onesAreWildListener);
+e_controls_onesAreWild.addEventListener('touchstart', onesAreWildListener);
 e_controls_onesAreWild.addEventListener('mousedown', onesAreWildListener);
 function onesAreWildListener() {
     options.onesAreWild = !options.onesAreWild;
@@ -279,7 +279,7 @@ function onesAreWildListener() {
 }
 
 // Music button
-e_controls_playSounds.addEventListener('touchdown', playSoundsListener);
+e_controls_playSounds.addEventListener('touchstart', playSoundsListener);
 e_controls_playSounds.addEventListener('mousedown', playSoundsListener);
 function playSoundsListener() {
     options.playSounds = !options.playSounds;
@@ -293,7 +293,7 @@ function playSoundsListener() {
 }
 
 // Instructions button
-e_controls_toggleInstructions.addEventListener('touchdown', toggleInstructionsListener);
+e_controls_toggleInstructions.addEventListener('touchstart', toggleInstructionsListener);
 e_controls_toggleInstructions.addEventListener('mousedown', toggleInstructionsListener);
 function toggleInstructionsListener() {
     air_console.message(AirConsole.SCREEN, {
@@ -302,7 +302,7 @@ function toggleInstructionsListener() {
 }
 
 // Bid button
-e_placeBid.addEventListener('touchdown', bidButtonListener);
+e_placeBid.addEventListener('touchstart', bidButtonListener);
 e_placeBid.addEventListener('mousedown', bidButtonListener);
 function bidButtonListener() {
     // Hide all the buttons
@@ -332,7 +332,7 @@ function bidButtonListener() {
 
 
 // Challenge button
-e_challengeBid.addEventListener('touchdown', challengeButtonListener);
+e_challengeBid.addEventListener('touchstart', challengeButtonListener);
 e_challengeBid.addEventListener('mousedown', challengeButtonListener);
 function challengeButtonListener() {
     // Hide all the buttons
@@ -346,13 +346,13 @@ function challengeButtonListener() {
 }
 
 // Quantity numberInput
-e_bidQuantity.children[0].addEventListener('touchdown', increaseBidQuantity);
+e_bidQuantity.children[0].addEventListener('touchstart', increaseBidQuantity);
 e_bidQuantity.children[0].addEventListener('mousedown', increaseBidQuantity);
 function increaseBidQuantity() {
     e_bidQuantity.children[1].innerHTML++;
     updateBid();
 }
-e_bidQuantity.children[2].addEventListener('touchdown', decreaseBidQuantity);
+e_bidQuantity.children[2].addEventListener('touchstart', decreaseBidQuantity);
 e_bidQuantity.children[2].addEventListener('mousedown', decreaseBidQuantity);
 function decreaseBidQuantity() {
     // Check not going below previous bid and not going below 1
@@ -363,7 +363,7 @@ function decreaseBidQuantity() {
 }
 
 // Die numberInput
-e_bidDie.children[0].addEventListener('touchdown', increaseBidDie);
+e_bidDie.children[0].addEventListener('touchstart', increaseBidDie);
 e_bidDie.children[0].addEventListener('mousedown', increaseBidDie);
 function increaseBidDie() {
     // Check not going beyond sides_on_die
@@ -372,7 +372,7 @@ function increaseBidDie() {
         updateBid();
     }
 }
-e_bidDie.children[2].addEventListener('touchdown', decreaseBidDie);
+e_bidDie.children[2].addEventListener('touchstart', decreaseBidDie);
 e_bidDie.children[2].addEventListener('mousedown', decreaseBidDie);
 function decreaseBidDie() {
     // Check not going below 1

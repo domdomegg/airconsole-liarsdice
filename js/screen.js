@@ -96,12 +96,24 @@ function init() {
 			// Remove marker
 			document.getElementById(gameInfo.nextPlayerDeviceId).children[0].innerHTML = '';
 
-			// Update current
-			e_current.innerHTML = '<span style="color: ' + players[device_id].color + '">■</span> A player left. Waiting for ' + playerStringWithColor(air_console.getMasterControllerDeviceId(), players[air_console.getMasterControllerDeviceId()].color) + ' to start the next round';
-			e_currentDice.innerHTML = '';
+			// Find new master controller
+			var newMasterController = air_console.getMasterControllerDeviceId()
 
-			// Update subtitle
-			e_subtitle.innerHTML = 'Waiting for ' + playerStringWithColor(air_console.getMasterControllerDeviceId(), players[air_console.getMasterControllerDeviceId()].color) + ' to start the next round';
+			if (newMasterController) {
+				// Update current
+				e_current.innerHTML = '<span style="color: ' + players[device_id].color + '">■</span> A player left. Waiting for ' + playerStringWithColor(newMasterController, players[newMasterController].color) + ' to start the next round';
+				e_currentDice.innerHTML = '';
+	
+				// Update subtitle
+				e_subtitle.innerHTML = 'Waiting for ' + playerStringWithColor(newMasterController, players[newMasterController].color) + ' to start the next round';
+			} else {
+				// Update current
+				e_current.innerHTML = '<span style="color: ' + players[device_id].color + '">■</span> A player left. Waiting for players';
+				e_currentDice.innerHTML = '';
+	
+				// Update subtitle
+				e_subtitle.innerHTML = '';
+			}
 		}
 
 		// Remove that user from players object

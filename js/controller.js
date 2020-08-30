@@ -33,12 +33,6 @@ var init = function() {
         orientation: AirConsole.ORIENTATION_PORTRAIT
     });
 
-    air_console.onReady = function() {
-        air_console.message(AirConsole.SCREEN, {
-            action: MESSAGES.getInfo
-        });
-    };
-
     air_console.onMessage = function(device_id, data) {
         if (device_id === AirConsole.SCREEN && data.action === MESSAGES.info) {
             playerInfo = data.playerInfo;

@@ -249,7 +249,8 @@ function updateBid() {
 // Toggle dice
 e_dice.addEventListener('touchstart', diceToggleListener);
 e_dice.addEventListener('mousedown', diceToggleListener);
-function diceToggleListener() {
+function diceToggleListener(event) {
+    event.preventDefault();
     dice_hidden = !dice_hidden;
     updateState();
 }
@@ -257,7 +258,8 @@ function diceToggleListener() {
 // Start round button
 e_controls_startRound.addEventListener('touchstart', startRoundButtonListener);
 e_controls_startRound.addEventListener('mousedown', startRoundButtonListener);
-function startRoundButtonListener() {
+function startRoundButtonListener(event) {
+    event.preventDefault();
     e_controls.style.display = "none";
     air_console.message(AirConsole.SCREEN, {
         action: MESSAGES.start
@@ -267,7 +269,9 @@ function startRoundButtonListener() {
 // 1's are wild button
 e_controls_onesAreWild.addEventListener('touchstart', onesAreWildListener);
 e_controls_onesAreWild.addEventListener('mousedown', onesAreWildListener);
-function onesAreWildListener() {
+function onesAreWildListener(event) {
+    event.preventDefault();
+
     options.onesAreWild = !options.onesAreWild;
 
     air_console.message(AirConsole.SCREEN, {
@@ -281,7 +285,9 @@ function onesAreWildListener() {
 // Music button
 e_controls_playSounds.addEventListener('touchstart', playSoundsListener);
 e_controls_playSounds.addEventListener('mousedown', playSoundsListener);
-function playSoundsListener() {
+function playSoundsListener(event) {
+    event.preventDefault();
+
     options.playSounds = !options.playSounds;
 
     air_console.message(AirConsole.SCREEN, {
@@ -295,7 +301,9 @@ function playSoundsListener() {
 // Instructions button
 e_controls_toggleInstructions.addEventListener('touchstart', toggleInstructionsListener);
 e_controls_toggleInstructions.addEventListener('mousedown', toggleInstructionsListener);
-function toggleInstructionsListener() {
+function toggleInstructionsListener(event) {
+    event.preventDefault();
+
     air_console.message(AirConsole.SCREEN, {
         action: MESSAGES.toggleInstructions
     });
@@ -304,7 +312,9 @@ function toggleInstructionsListener() {
 // Bid button
 e_placeBid.addEventListener('touchstart', bidButtonListener);
 e_placeBid.addEventListener('mousedown', bidButtonListener);
-function bidButtonListener() {
+function bidButtonListener(event) {
+    event.preventDefault();
+
     // Hide all the buttons
     e_placeBid.style.display = "none";
     e_invalidBid.style.display = "none";
@@ -334,7 +344,9 @@ function bidButtonListener() {
 // Challenge button
 e_challengeBid.addEventListener('touchstart', challengeButtonListener);
 e_challengeBid.addEventListener('mousedown', challengeButtonListener);
-function challengeButtonListener() {
+function challengeButtonListener(event) {
+    event.preventDefault();
+
     // Hide all the buttons
     e_placeBid.style.display = "none";
     e_invalidBid.style.display = "none";
@@ -348,13 +360,17 @@ function challengeButtonListener() {
 // Quantity numberInput
 e_bidQuantity.children[0].addEventListener('touchstart', increaseBidQuantity);
 e_bidQuantity.children[0].addEventListener('mousedown', increaseBidQuantity);
-function increaseBidQuantity() {
+function increaseBidQuantity(event) {
+    event.preventDefault();
+
     e_bidQuantity.children[1].innerHTML++;
     updateBid();
 }
 e_bidQuantity.children[2].addEventListener('touchstart', decreaseBidQuantity);
 e_bidQuantity.children[2].addEventListener('mousedown', decreaseBidQuantity);
-function decreaseBidQuantity() {
+function decreaseBidQuantity(event) {
+    event.preventDefault();
+
     // Check not going below previous bid and not going below 1
     if (Number(e_bidQuantity.children[1].innerHTML) > gameInfo.currentBidQuantity && Number(e_bidQuantity.children[1].innerHTML) > 1) {
         e_bidQuantity.children[1].innerHTML--;
@@ -365,7 +381,9 @@ function decreaseBidQuantity() {
 // Die numberInput
 e_bidDie.children[0].addEventListener('touchstart', increaseBidDie);
 e_bidDie.children[0].addEventListener('mousedown', increaseBidDie);
-function increaseBidDie() {
+function increaseBidDie(event) {
+    event.preventDefault();
+
     // Check not going beyond sides_on_die
     if (Number(e_bidDie.children[1].innerHTML) < gameInfo.sides_on_die) {
         e_bidDie.children[1].innerHTML++;
@@ -374,7 +392,9 @@ function increaseBidDie() {
 }
 e_bidDie.children[2].addEventListener('touchstart', decreaseBidDie);
 e_bidDie.children[2].addEventListener('mousedown', decreaseBidDie);
-function decreaseBidDie() {
+function decreaseBidDie(event) {
+    event.preventDefault();
+
     // Check not going below 1
     if (Number(e_bidDie.children[1].innerHTML) > 1) {
         e_bidDie.children[1].innerHTML--;

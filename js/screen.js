@@ -115,19 +115,22 @@ function init() {
 
 	air_console.onMessage = function(device_id, data) {
 		// MESSAGES are defined in shared.js
-		if (data.action === MESSAGES.start && device_id == air_console.getMasterControllerDeviceId()) {
-			startGame();
-		} else if (data.action === MESSAGES.bid) {
+		if (data.action === MESSAGES.bid) {
 			doBid(device_id, data.bid);
 		} else if (data.action === MESSAGES.challenge) {
 			doChallenge(device_id);
 		} else if (data.action === MESSAGES.getInfo) {
 			updateController(device_id);
-		} else if (data.action === MESSAGES.changeOptions && device_id == air_console.getMasterControllerDeviceId()) {
-			options = data.options;
-			updateOptions();
-		} else if (data.action === MESSAGES.toggleInstructions && device_id == air_console.getMasterControllerDeviceId()) {
-			toggleInstructions();
+		} else {
+			var masterController = air_console.getMasterControllerDeviceId()
+			if (data.action === MESSAGES.start && device_id == masterController) {
+					startGame();
+			} else if (data.action === MESSAGES.changeOptions && device_id == masterController) {
+				options = data.options;
+				updateOptions();
+			} else if (data.action === MESSAGES.toggleInstructions && device_id == masterController) {
+				toggleInstructions();
+			}
 		}
 	};
 

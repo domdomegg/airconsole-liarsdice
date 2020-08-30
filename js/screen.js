@@ -270,11 +270,12 @@ function doChallenge(device_id) {
 	for (var i = 0; i < gameInfo.activePlayerDeviceIds.length; i++) {
 		for (var j = 0; j < gameInfo.starting_dice; j++) {
 			// May the odds be ever in your favour
-			if (players[gameInfo.activePlayerDeviceIds[i]].dice[j] == gameInfo.currentBidDie) {
+			var die = players[gameInfo.activePlayerDeviceIds[i]].dice[j];
+			if (die == gameInfo.currentBidDie || (options.onesAreWild && die == 1)) {
 				actual_number_of_die++;
-				s1 += '<div class="die" style="background-position: ' + (players[gameInfo.activePlayerDeviceIds[i]].dice[j] - 1) * 20 + '% 0; background-color: ' + players[gameInfo.activePlayerDeviceIds[i]].color + '"></div>';
+				s1 += '<div class="die" style="background-position: ' + (die - 1) * 20 + '% 0; background-color: ' + players[gameInfo.activePlayerDeviceIds[i]].color + '"></div>';
 			} else {
-				s2 += '<div class="die" style="background-position: ' + (players[gameInfo.activePlayerDeviceIds[i]].dice[j] - 1) * 20 + '% 0; background-color: ' + players[gameInfo.activePlayerDeviceIds[i]].color + '"></div>';
+				s2 += '<div class="die" style="background-position: ' + (die - 1) * 20 + '% 0; background-color: ' + players[gameInfo.activePlayerDeviceIds[i]].color + '"></div>';
 			}
 		}
 	}
